@@ -1,0 +1,44 @@
+.authentification {
+	background: url("../img/home.png") no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.background {
+	background: url("../img/back.png") no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.cardColor {
+	background-color: rgba(52,58,64,0.75);
+	color: white;
+}
+
+.navColor {
+	background-color: rgba(52,58,64,0.9);
+	color: white;
+}
+
+.cardPosition {
+	margin-top: 100px;
+}
+
+.margin {
+	margin-right: 10px
+}
+
+ul {
+   list-style-type: none;
+}
+li:before {
+   content: '- ';
+}
+
+.logo {
+	max-width: 300px;
+}
