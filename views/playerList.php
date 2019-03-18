@@ -17,7 +17,7 @@ require '../controllers/playerListController.php';
     <div class="mr-auto">
       <img src="../assets/img/logo.png" height="42" class="margin">
       <a href="home.php" class="text-white margin" role="button" aria-pressed="true">Actualités</a>
-      <a href="taskList.php" class="text-white margin" role="button" aria-pressed="true">Liste des études</a>
+      <a href="portals.php" class="text-white margin" role="button" aria-pressed="true">Liste des études</a>
       <a href="playerList.php" class="text-white margin" role="button" aria-pressed="true">Liste des joueurs</a>
     </div>
     <div class="nav justify-content-end">
