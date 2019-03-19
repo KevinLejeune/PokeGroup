@@ -16,8 +16,6 @@ var Map = function(map_container_id) {
 		feature.setStyle(icon_styles['unconfirmed']);
 
 		features.addFeature(feature);
-
-		console.log(portal);
 	};
 
 	this.updatePortal = function(latlong, state) {
