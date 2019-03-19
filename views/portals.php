@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-require '../controllers/taskListController.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">

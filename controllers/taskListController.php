@@ -1,7 +1,7 @@
 <?php
 require '../models/database.php';
 require '../models/task.php';
-require '../models/pokestop.php';
+// require '../models/pokestop.php';
 
 // $showDetails = new Pokestop();
 // $name = htmlspecialchars($_GET['name']);
@@ -19,22 +19,8 @@ require '../models/pokestop.php';
 // }
 
 
-$task = new Task();
-$pokestop = new Pokestop();
+// $task = new Task();
+// $pokestop = new Pokestop();
 
-$taskList = $task->showTask();
-$pokestopList = $pokestop->showPokestop();
-
-
-//Pour task :
-// name
-// reward
-// shiny
-// pcMin
-// pcMax
-
-//Pour les Pokestop :
-// image
-// name
-// latitude
-// longitude
+// $taskList = $task->showTask();
+// $pokestopList = $pokestop->showPokestop();

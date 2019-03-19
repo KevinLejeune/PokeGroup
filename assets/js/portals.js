@@ -5,17 +5,19 @@ var Map = function(map_container_id) {
 	};
 
 	this.addPortal = function(portal) {
-		var coords = [portal.coords.longitude, portal.coords.latitude];
+		var coords = [parseFloat(portal.longitude), parseFloat(portal.latitude)];
 
 		var feature = new ol.Feature({
 			geometry: new ol.geom.Point(ol.proj.fromLonLat(coords)),
 			name: portal.name
 		});
 
-		feature.setId(portal.coords.latitude+','+portal.coords.longitude);
-		feature.setStyle(icon_styles[portal.state]);
+		feature.setId(portal.latitude+','+portal.longitude);
+		feature.setStyle(icon_styles['unconfirmed']);
 
 		features.addFeature(feature);
+
+		console.log(portal);
 	};
 
 	this.updatePortal = function(latlong, state) {
@@ -44,7 +46,7 @@ var Map = function(map_container_id) {
 		],
 		target: map_container_id,
 		view: new ol.View({
-			center: ol.proj.fromLonLat([2.2847, 49.8987]),
+			center: ol.proj.fromLonLat([2.302486, 49.891361]),
 			zoom: 16
 		})
 	});
@@ -104,4 +106,4 @@ document.querySelector('#popup form').addEventListener('submit', evt => {
 	.then(portal => map.updatePortal(portal.latlong, portal.state));
 });
 
-fetch('../assets/js/portals.json').then(response => response.json()).then(portals => map.setPortals(portals));
+fetch('../controllers/pokestopController.php').then(response => response.json()).then(portals => map.setPortals(portals));
