@@ -9,25 +9,26 @@ var Map = function(map_container_id) {
 
 		var feature = new ol.Feature({
 			geometry: new ol.geom.Point(ol.proj.fromLonLat(coords)),
-			name: portal.name
+			name: portal.name,
+			image: portal.image
 		});
 
 		feature.setId(portal.latitude+','+portal.longitude);
-		feature.setStyle(icon_styles['unconfirmed']);
+		feature.setStyle(icon_styles['pokestop']);
 
 		features.addFeature(feature);
 	};
 
-	this.updatePortal = function(latlong, state) {
+	this.updatePortal = function(latlong, pokestop) {
 		var feature = features.getFeatureById(latlong);
-		feature.setStyle(icon_styles[state]);
+		feature.setStyle(icon_styles[pokestop]);
 	};
 
 	var icon_styles = {};
-	['unconfirmed', 'pokestop', 'gym'].forEach(function(state) {
-		icon_styles[state] = new ol.style.Style({
+	['pokestop'].forEach(function(pokestop) {
+		icon_styles[pokestop] = new ol.style.Style({
 			image: new ol.style.Icon({
-				src: '../assets/img/'+state+'.png'
+				src: '../assets/img/'+pokestop+'.png'
 			})
 		});
 	});
@@ -79,8 +80,10 @@ var Map = function(map_container_id) {
 
 			else {
 				popup_elt.querySelector('h5').textContent = feature.get('name');
-				popup_elt.querySelector('p').textContent = feature.getId();
-				popup_form.querySelector('input[name="latlong"]').value = feature.getId();
+				// popup_elt.querySelector('p').textContent = feature.getId();
+				// popup_form.querySelector('input[name="latlong"]').value = feature.getId();
+				var img = popup_elt.querySelector('img');
+				img.setAttribute('src', feature.get('image'));
 				popup.setPosition(coords);
 			}
 		}
@@ -93,15 +96,15 @@ document.querySelector('#popup form').addEventListener('submit', evt => {
 	evt.preventDefault();
 
 	var data = new FormData(evt.target);
-	var state = evt.target.querySelector('input[type="image"]:focus').getAttribute('data-state');
-	data.append('state', state);
+	var pokestop = evt.target.querySelector('input[type="image"]:focus').getAttribute('data-pokestop');
+	data.append('pokestop', pokestop);
 
 	fetch('../controllers/update-portal.php', {
 		method: 'POST',
 		body: data
 	})
 	.then(response => response.json())
-	.then(portal => map.updatePortal(portal.latlong, portal.state));
+	.then(portal => map.updatePortal(portal.latlong, portal.pokestop));
 });
 
 fetch('../controllers/pokestopController.php').then(response => response.json()).then(portals => map.setPortals(portals));

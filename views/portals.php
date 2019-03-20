@@ -11,7 +11,6 @@ session_start();
 	<link rel="shortcut icon" href="../assets/img/favicon.png"/>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
-	<link rel="stylesheet" media="screen" href="../assets/css/portals.css" />
 </head>
 <body class="background">
 	<nav class="navbar navbar-expand-lg navColor">
@@ -37,14 +36,22 @@ session_start();
 			<div id="popup">
 				<h5></h5>
 
-				<p></p>
+				<img id="pokestopImg">
 
-				<div>
+				<div style="margin-top: 10px;">
 					<form method="post" action="">
 						<input type="hidden" name="latlong" value="" />
-						<input type="image" src="../assets/img/unconfirmed.png" data-state="unconfirmed" title="Unconfirmed" />
-						<input type="image" src="../assets/img/pokestop.png" data-state="pokestop" title="PokéStop" />
-						<input type="image" src="../assets/img/gym.png" data-state="gym" title="Gym" />
+						<input type="image" src="../assets/img/pokestop.png" data-state="pokestop" title="PokéStop"/>
+					</form>
+
+
+					<form name='add' method="post">
+					Étude: <select name='age'>
+					     <option value='1_sre' >23</option>
+					     <option value='2_sam'>24</option>
+					     <option value='5_john'>25</option>
+					     </select>
+					<input type='submit' name='submit'/>
 					</form>
 				</div>
 			</div>
